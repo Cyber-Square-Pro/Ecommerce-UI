@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import './Banners.css'; 
 
 export default function Banners() {
   const [images] = useState([
@@ -32,11 +33,11 @@ export default function Banners() {
   };
 
   return (
-    <div style={{marginTop:'10px',marginBottom:'30px'}}>
+    <div className="banners-container">
       <Slider {...carouselSettings}>
         {images.map((image, index) => (
           <div key={index}>
-            <img src={image.image} alt={image.title} />
+            <img src={image.image} alt={image.title} className="banner-image" />
           </div>
         ))}
       </Slider>

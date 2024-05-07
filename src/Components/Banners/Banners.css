@@ -1,0 +1,26 @@
+.banners-container {
+    margin-top: 10px;
+    margin-bottom: 30px;
+  }
+  
+  .banner-image {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  
+  /* Responsive styles using media queries */
+  @media (min-width: 768px) {
+    .banner-image {
+      max-width: 100%; /* Ensure images do not exceed the container width */
+      height: auto; /* Maintain aspect ratio */
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .banners-container {
+      margin-top: 20px;
+      margin-bottom: 40px;
+    }
+  }
+  

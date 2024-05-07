@@ -1,0 +1,43 @@
+.offers-container {
+    margin-bottom: 50px;
+    padding: 0 16px; /* Add horizontal padding for responsiveness */
+  }
+  
+  .offers-heading {
+    text-align: center;
+  }
+  
+  .cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .offer-card {
+    width: 100%;
+    max-width: 300px;
+    margin: 16px;
+  }
+  
+  .offer-image {
+    height: 200px;
+    object-fit: cover;
+  }
+  
+  /* Responsive styles using media queries */
+  @media (min-width: 768px) {
+    .offers-container {
+      padding: 0 32px; /* Increase horizontal padding for larger screens */
+    }
+  
+    .offer-card {
+      width: calc(50% - 32px); /* Two cards per row with spacing */
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .offer-card {
+      width: calc(33.33% - 32px); /* Three cards per row with spacing */
+    }
+  }
+  

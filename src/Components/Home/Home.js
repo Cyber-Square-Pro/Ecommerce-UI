@@ -15,7 +15,7 @@ import ShareTwoToneIcon from '@mui/icons-material/ShareTwoTone';
 import Footer from '../Footer/Footer';
 import Banners from '../Banners/Banners';
 import Offers from '../Offers/Offers';
-
+import './style.css'
 export default function Home() {
   const [products, setProducts] = useState([]);
 
@@ -33,11 +33,11 @@ export default function Home() {
 
   return (
     <div>
-     <Banners/>
-     <div>
-      <Offers/>
-     </div>
-      <div style={{ marginTop: '10px', display: 'flex', flexWrap: 'wrap', gap: '20px', justifyContent: 'center' }}>
+      <Banners />
+      <div>
+        <Offers />
+      </div>
+      <div className="card-container">
         {Array.isArray(products) && products.length > 0 ? (
           products.map((product) => (
             <Link key={product._id} to={`/product/${product._id}`} style={{ textDecoration: 'none' }}>
@@ -73,7 +73,6 @@ export default function Home() {
           <Typography variant="body1">No products available</Typography>
         )}
       </div>
-      
     </div>
   );
 }

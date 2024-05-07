@@ -4,54 +4,52 @@ import axios from 'axios';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Rating from '@mui/material/Rating';
-import Stack from '@mui/material/Stack';
-import ShareTwoToneIcon from '@mui/icons-material/ShareTwoTone';
-import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
 function ProductDetails() {
-  const { productId } = useParams(); // Get productId from URL params
+  const { productId } = useParams();
   const [product, setProduct] = useState(null);
+  
+
 
   useEffect(() => {
     const fetchProductDetails = async () => {
       try {
         const response = await axios.get(`http://localhost:2000/products/${productId}`);
-        setProduct(response.data.data); // Assuming the API response provides detailed product information
+        setProduct(response.data.data);
       } catch (error) {
         console.error('Error fetching product details:', error);
       }
     };
     fetchProductDetails();
-  }, [productId]); // Trigger useEffect when productId changes
+  }, [productId]);
+
+  
 
   return (
-    <div>
+    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'flex-start', minHeight: '100vh', padding: '20px' }}>
       {product ? (
-        <div>
-          <Card sx={{ maxWidth: 545, marginBottom: 20 }} style={{backgroundColor: 'transparent'}}>
-            <CardMedia component="img" alt={product.title} height="510px" width="400px" image={`http://localhost:2000${product.images}`} />
-          </Card>
-          <div style={{ paddingLeft: '200px', marginTop: '-700px', display: 'flex', justifyContent: 'center', alignItems: 'center', minHeight: '100vh' }}>
-            <Card sx={{ minHeight: '700px', minWidth: '500px', backgroundColor: 'transparent' }}>
+        <div style={{ maxWidth: '90%', width: '100%', display: 'flex', flexDirection: 'row', alignItems: 'flex-start' }}>
+          <div style={{ flex: '1', marginRight: '20px' }}>
+            <Card style={{ width: '100%' }}>
+              <CardMedia component="img" alt={product.title} image={`http://localhost:2000${product.images}`} />
+            </Card>
+          </div>
+          <div style={{ flex: '2' }}>
+            <Card style={{ width: '100%' }}>
               <CardContent>
-                <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                  <h1>{product.title}</h1>
+                <Typography variant="h5" component="div" gutterBottom>
+                  {product.title}
                 </Typography>
-                <Typography variant="h5" component="div">
-                  <Rating name="read-only" value={product.rating} readOnly />
-                  <br/>{product.rating}
-                </Typography>
-                <Typography style={{ width: '500px' }} color="text.secondary">
+                <Rating name="read-only" value={product.rating} readOnly />
+                <Typography color="text.secondary" gutterBottom>
                   {product.description}
                 </Typography>
-                <Typography variant="body2">
-                  <h1>₹{product.price}</h1>
-                  <br />
-                  {"\"a benevolent smile\""}
+                <Typography variant="body2" gutterBottom>
+                  ₹{product.price}
                 </Typography>
               </CardContent>
               <CardActions>
@@ -64,6 +62,7 @@ function ProductDetails() {
       ) : (
         <p>Loading product details...</p>
       )}
+      
     </div>
   );
 }
